@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanzaSim - Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dashboard</h1>
+            <div id="session-info"></div>
+            <div id="timer"></div>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="chart-container card">
+                <h2>Financial Overview</h2>
+                <canvas id="financials-chart"></canvas>
+            </div>
+
+            <div class="chat-container card">
+                <h2>Quarterly Decision</h2>
+                <div id="chat-box"></div>
+                <div id="decision-form">
+                    <h3>Your Decision</h3>
+                    <input type="number" id="production-input" placeholder="Production Units">
+                    <input type="number" id="price-input" placeholder="Price per Unit">
+                    <input type="number" id="marketing-input" placeholder="Marketing Spend">
+                    <button id="submit-decision">Submit Decision</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
