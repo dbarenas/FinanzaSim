@@ -1,12 +1,12 @@
 ## 📊 Especificación: Simulador Multijugador de Análisis Financiero (FinanzaSim)
 
-El siguiente documento estructura la arquitectura, lógica de negocio y características clave para el desarrollo del simulador **FinanzaSim**, utilizando un *stack* centrado en **Google Cloud (Firebase/Firestore)** para la persistencia y **Gemini API** para la inteligencia artificial.
+El siguiente documento estructura la arquitectura, lógica de negocio y características clave para el desarrollo del simulador **FinanzaSim**, utilizando un *stack* centrado en **Google Cloud (Firebase, Gemini)** y tecnologías web.
 
 -----
 
 ## 1\. Objetivo del Proyecto
 
-Desarrollar una aplicación *full-stack* que simule la gestión financiera de empresas en un entorno competitivo por trimestres. Los jugadores (CEO) toman decisiones clave (producción, precio y marketing) y un **Agente de IA** ofrece análisis y guía personalizada. El sistema calculará el impacto de las decisiones en los estados financieros en tiempo real y comparará el rendimiento entre participantes.
+Desarrollar una aplicación *full-stack* que simule la gestión financiera de empresas en un entorno competitivo por trimestres. Los jugadores (CEO) toman decisiones clave (producción, precio y marketing), reciben análisis de IA y compiten por liderazgo financiero.
 
 -----
 
@@ -16,7 +16,7 @@ Desarrollar una aplicación *full-stack* que simule la gestión financiera de em
 
 | Componente | Tecnología | Propósito |
 | :--- | :--- | :--- |
-| **Lógica de Negocio** | **JavaScript** (Integrada en el Frontend) | Ejecución del modelo económico, cálculos de estados financieros, y función de **cierre de trimestre** (`closeQuarter()`). Se ejecuta por el **Host** para asegurar la sincronización. |
+| **Lógica de Negocio** | **JavaScript** (Integrada en el Frontend) | Ejecución del modelo económico, cálculos de estados financieros, y función de **cierre de trimestre** (`closeQuarter()`). Se ejecuta de forma descentralizada y segura a nivel cliente. |
 | **Base de Datos** | **Google Firestore** | Persistencia de sesiones, estados financieros históricos de cada jugador y registros de *chat* del Agente en tiempo real. |
 | **Integración AI** | **API de Gemini** | Generación de **diagnósticos** y **directivas financieras** personalizados para el jugador al inicio de cada trimestre. |
 
@@ -115,7 +115,7 @@ Esta función es clave y debe ser ejecutada de manera atómica y segura por el *
       * $\text{Ingresos}$ y $\text{Utilidad Neta}$
       * $\text{Razón Circulante}$ y $\text{Margen Neto}$
       * $\text{Decisiones tomadas}$ (Producción, Precio, Marketing).
-  * **Output (Respuesta):** Generar un **diagnóstico** conciso de la salud financiera (enfocado en liquidez y rentabilidad) y una **directiva** o pregunta clave estratégica para la toma de decisiones en el trimestre entrante. El mensaje debe guardarse en el *array* `agentChat`.
+  * **Output (Respuesta):** Generar un **diagnóstico** conciso de la salud financiera (enfocado en liquidez y rentabilidad) y una **directiva** o pregunta clave estratégica para la toma de decisiones del próximo trimestre.
 
 -----
 
@@ -143,7 +143,13 @@ Esta función es clave y debe ser ejecutada de manera atómica y segura por el *
       * **Estado de Resultados (P\&L):** $\text{Ingresos}$, $\text{COGS}$, $\text{EBIT}$, $\text{Utilidad Neta}$.
       * **Ratios Clave:** $\text{Razón Circulante}$ ($\text{Activo Circulante} / \text{Pasivo Circulante}$) y $\text{Margen Neto}$ ($\text{Utilidad Neta} / \text{Ingresos}$).
 
-[Image of a financial statement dashboard with key ratios]
+<div align="center">
+
+![Ejemplo de dashboard financiero con KPIs](https://files.oaiusercontent.com/file-MudlEayMoL73wYXGoESbsFnH?se=2024-05-29T20%3A10%3A42Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image&s... "Dashboard financiero con indicadores clave")
+
+</div>
+
+*Imagen 1: Ejemplo visual de dashboard financiero con indicadores clave, gráficos de ingresos, flujos de caja, rentabilidad, precio, EBIT y ratios.*
 
 ### 3.4. Comparación de Rendimiento (Leaderboard)
 
