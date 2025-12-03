@@ -2,6 +2,8 @@
 
 Simulador multijugador de análisis financiero, reescrito íntegramente en **Python**. El proyecto incluye motor económico, orquestación de partidas, demo por consola y pruebas automatizadas listos para ejecutarse localmente.
 
+![Finance panel](https://github.com/dbarenas/FinanzaSim/blob/main/fin_desc.png)
+
 ## Requisitos
 
 - Python **3.11+**
